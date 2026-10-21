@@ -1,0 +1,493 @@
+/* =========================
+   1. GLOBAL STYLES
+========================= */
+
+:root {
+    --bg: #09111f;
+    --panel: #111d30;
+    --cyan: #53e0e8;
+    --text: #f2f7ff;
+    --muted: #91a1b9;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 60px 16px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(ellipse at 15% 15%,
+            #17314a,
+            transparent 42%),
+        radial-gradient(ellipse at 85% 85%,
+            #153b4a,
+            transparent 38%),
+        var(--bg);
+
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+
+    overflow-x: hidden;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+/* =========================
+   2. BACKGROUND DECORATION
+========================= */
+
+.orb {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.orb-one {
+    width: 230px;
+    height: 230px;
+    top: -80px;
+    right: -50px;
+
+    background: #53e0e80b;
+    border: 1px solid #53e0e81c;
+}
+
+.orb-two {
+    width: 170px;
+    height: 170px;
+    bottom: -55px;
+    left: -45px;
+
+    background: #8b7cff0d;
+    border: 1px solid #8b7cff20;
+}
+
+/* =========================
+   3. CIRCULAR LOGIN CARD
+========================= */
+
+.login-card {
+    position: relative;
+    z-index: 1;
+
+    width: min(100%, 460px);
+    aspect-ratio: 1 / 1;
+    height: auto;
+
+    padding: clamp(32px, 9%, 58px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+
+    flex-shrink: 0;
+
+    background: rgba(17, 29, 48, 0.96);
+    border: 1px solid #53e0e855;
+    border-radius: 50%;
+
+    box-shadow: 0 0 40px #53e0e822;
+    backdrop-filter: blur(16px);
+
+    animation: appear 0.7s ease;
+}
+
+/* =========================
+   4. LOGO
+========================= */
+
+.login-card .logo {
+    text-align: center;
+    font-size: clamp(19px, 4vw, 27px);
+    font-weight: 900;
+    letter-spacing: -2px;
+    line-height: 1.2;
+}
+
+.login-card .logo span {
+    color: var(--cyan);
+}
+
+/* =========================
+   5. HEADINGS
+========================= */
+
+.login-card .eyebrow {
+    text-align: center;
+    color: var(--cyan);
+
+    font-size: clamp(7px, 1.8vw, 10px);
+    letter-spacing: clamp(0.5px, 0.3vw, 1.8px);
+
+    margin: 10px 0 8px;
+    line-height: 1.4;
+}
+
+.login-card h1 {
+    text-align: center;
+    font-size: clamp(18px, 5vw, 28px);
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+}
+
+.login-card .subtitle {
+    color: var(--muted);
+    text-align: center;
+
+    font-size: clamp(10px, 2.6vw, 13px);
+    line-height: 1.4;
+
+    margin: 8px 0 12px;
+}
+
+/* =========================
+   6. FORM
+========================= */
+
+.login-card form {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-card form>label {
+    display: block;
+    color: #dbe6f5;
+
+    font-size: clamp(10px, 2.5vw, 12px);
+    line-height: 1.4;
+
+    margin: 9px 0 5px;
+}
+
+.login-card form>input {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    min-height: 38px;
+
+    padding: clamp(8px, 2.5vw, 12px);
+
+    background: #081321;
+    color: var(--text);
+
+    border: 1px solid #ffffff1b;
+    border-radius: 25px;
+
+    font-size: clamp(10px, 2.7vw, 13px);
+    outline: none;
+
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.login-card form>input::placeholder {
+    color: #71849b;
+}
+
+.login-card form>input:focus {
+    border-color: var(--cyan);
+    box-shadow: 0 0 0 3px #53e0e81c;
+}
+
+/* =========================
+   7. FORM OPTIONS
+========================= */
+
+.login-card .options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    flex-wrap: wrap;
+    gap: 6px;
+
+    margin: 12px 0 15px;
+
+    font-size: clamp(8px, 2.1vw, 11px);
+    line-height: 1.5;
+}
+
+.login-card .remember {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    color: var(--muted);
+    min-width: 0;
+}
+
+.login-card .remember input {
+    accent-color: var(--cyan);
+    flex-shrink: 0;
+}
+
+.login-card a {
+    color: var(--cyan);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.login-card a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   8. RESPONSIVE BUTTON
+========================= */
+
+.login-card #submitBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    width: 75%;
+    max-width: 220px;
+    min-width: 0;
+    min-height: 42px;
+
+    padding: clamp(9px, 2.5vw, 13px) 12px;
+    margin: 0 auto;
+
+    align-self: center;
+
+    border: none;
+    border-radius: 30px;
+
+    background: var(--cyan);
+    color: #07131f;
+
+    font-size: clamp(11px, 2.8vw, 14px);
+    font-weight: 800;
+    line-height: 1.4;
+
+    white-space: normal;
+    overflow-wrap: anywhere;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
+
+.login-card #submitBtn span {
+    float: none;
+    flex-shrink: 0;
+    font-size: 17px;
+    line-height: 1;
+}
+
+.login-card #submitBtn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+    box-shadow: 0 5px 18px #53e0e844;
+}
+
+.login-card #submitBtn:active {
+    transform: scale(0.98);
+}
+
+.login-card #submitBtn:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 3px;
+}
+
+@media (max-width: 380px) {
+    .login-card #submitBtn {
+        width: 70%;
+        max-width: 180px;
+        min-height: 38px;
+        padding: 8px;
+    }
+}
+
+/* =========================
+   9. SIGN IN / SIGN UP TEXT
+========================= */
+
+.login-card .switch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+
+    text-align: center;
+    color: var(--muted);
+
+    font-size: clamp(9px, 2.3vw, 11px);
+    line-height: 1.5;
+
+    margin: 13px 0 0;
+}
+
+.login-card .switch button {
+    border: none;
+    background: transparent;
+
+    color: var(--cyan);
+    font-size: inherit;
+    font-weight: 700;
+
+    cursor: pointer;
+    overflow-wrap: anywhere;
+}
+
+.login-card .switch button:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   10. MESSAGE
+========================= */
+
+.login-card .notice {
+    color: var(--cyan);
+
+    text-align: center;
+    font-size: clamp(8px, 2vw, 10px);
+    line-height: 1.4;
+
+    margin: 5px 0 0;
+
+    overflow-wrap: anywhere;
+}
+
+/* =========================
+   11. FOOTER
+========================= */
+
+footer {
+    position: relative;
+    z-index: 1;
+
+    margin-top: 22px;
+    text-align: center;
+
+    color: #71849b;
+    font-size: clamp(8px, 1.8vw, 9px);
+    letter-spacing: 2px;
+    line-height: 1.6;
+}
+
+/* =========================
+   12. ANIMATION
+========================= */
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   13. TABLETS
+========================= */
+
+@media (min-width: 600px) and (max-width: 900px) {
+    .login-card {
+        width: min(78vw, 440px);
+    }
+}
+
+/* =========================
+   14. SMALL MOBILE
+========================= */
+
+@media (max-width: 380px) {
+    body {
+        padding: 40px 8px;
+    }
+
+    .login-card {
+        width: 100%;
+        padding: 9%;
+    }
+
+    .login-card .eyebrow {
+        letter-spacing: 0.5px;
+    }
+
+    .login-card .subtitle {
+        margin: 6px 0 8px;
+    }
+
+    .login-card form>label {
+        margin: 6px 0 4px;
+    }
+
+    .login-card .options {
+        margin: 9px 0 11px;
+    }
+
+    .login-card #submitBtn {
+        min-height: 38px;
+        padding: 8px;
+    }
+
+    .login-card .switch {
+        margin-top: 9px;
+    }
+}
+
+/* =========================
+   15. SHORT SCREENS
+========================= */
+
+@media (max-height: 650px) {
+    body {
+        justify-content: flex-start;
+        padding-top: 24px;
+        padding-bottom: 24px;
+    }
+
+    .login-card {
+        flex-shrink: 0;
+    }
+}
+
+/* =========================
+   16. ACCESSIBILITY
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

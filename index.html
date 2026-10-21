@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexa | Welcome Back</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="orb orb-one"></div>
+    <div class="orb orb-two"></div>
+
+    <main class="login-card">
+        <div class="logo">N<span>X</span></div>
+        <p class="eyebrow">YOUR SPACE, YOUR JOURNEY</p>
+        <h1 id="heading">Welcome back</h1>
+        <p class="subtitle" id="subtitle">Sign in to continue your journey.</p>
+
+        <form id="authForm">
+            <label for="email">Email address</label>
+            <input id="email" type="email" placeholder="you@example.com" required>
+
+            <label for="password">Password</label>
+            <input id="password" type="password" placeholder="Enter your password" minlength="6" required>
+
+            <div class="options">
+                <label class="remember">
+                    <input type="checkbox"> Remember me
+                </label>
+                <a href="#" id="forgot">Forgot password?</a>
+            </div>
+
+            <button type="submit" id="submitBtn">
+                Sign in <span>→</span>
+            </button>
+        </form>
+
+        <p class="switch">
+            <span id="switchText">New here?</span>
+            <button id="toggleMode" type="button">Create account</button>
+        </p>
+        <p class="notice" id="notice" aria-live="polite"></p>
+    </main>
+
+    <footer>DESIGNED FOR YOUR NEXT CHAPTER</footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
